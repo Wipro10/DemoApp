@@ -17,7 +17,7 @@ class HomeViewModel {
     public weak var delegate: APIresponseDeleagte?
     let apiService: APIServiceProtocol
     
-    private var topStories: [TopStories] = [TopStories]()
+    private var topStories: [TopStorie] = [TopStorie]()
     
     private var cellViewModels: [TopStoriesListCellViewModel] = [TopStoriesListCellViewModel]() {
         didSet {
@@ -64,19 +64,19 @@ class HomeViewModel {
         return cellViewModels[indexPath.row]
     }
     
-    func createCellViewModel( topStory: TopStories ) -> TopStoriesListCellViewModel {
+    func createCellViewModel( topStory: TopStorie ) -> TopStoriesListCellViewModel {
         
-        let multimdeia = topStory.multimedia?.filter{
-            $0.format == ImageSize.thumbLarge
+        let multimdeia = topStory.imageGallery?.filter{
+            $0.imageFormat == ImageSize.thumbLarge
         }
         
-        let imageUrl =  (multimdeia?.count) ?? 0  > 0 ? multimdeia?[0].url : ""
+        let imageUrl =  (multimdeia?.count) ?? 0  > 0 ? multimdeia?[0].imageUrl : ""
         
-        return TopStoriesListCellViewModel(titleText: topStory.title ??
-                                               "" , authorText: topStory.byline ?? "" , imageUrl: imageUrl ?? "")
+        return TopStoriesListCellViewModel(titleText: topStory.newsTitle ??
+                                               "" , authorText: topStory.newsByLine ?? "" , imageUrl: imageUrl ?? "")
     }
     
-    private func processFetchedTopStories( topStories: [TopStories] ) {
+    private func processFetchedTopStories( topStories: [TopStorie] ) {
         self.topStories = topStories // Cache
         var vms = [TopStoriesListCellViewModel]()
         for topStory in topStories {
@@ -88,19 +88,20 @@ class HomeViewModel {
 }
 
 extension HomeViewModel {
-    func userPressed( at indexPath: IndexPath ){
-        let topStory = self.topStories[indexPath.row]
-        let multimdeia = topStory.multimedia?.filter{
-            $0.format == ImageSize.mediumThreeByTwo210
+    func userPressed( at: Int ) -> TopStoryDetailsViewModel?{
+        let topStory = self.topStories[at]
+        let multimdeia = topStory.imageGallery?.filter{
+            $0.imageFormat == ImageSize.mediumThreeByTwo210
         }
-        let imageUrl =  (multimdeia?.count ?? 0) > 0 ? multimdeia?[0].url : ""
+        let imageUrl =  (multimdeia?.count ?? 0) > 0 ? multimdeia?[0].imageUrl : ""
         var dateString = ""
-        if (topStory.published_date != nil){
-            guard let dateArray = topStory.published_date?.components(separatedBy: "T") else { return }
+        if (topStory.newsPublishedDate != nil){
+            guard let dateArray = topStory.newsPublishedDate?.components(separatedBy: "T") else { return nil }
 
             dateString = dateArray.count > 0 ? dateArray[0]  : ""
         }
-        self.selectedTopStory = TopStoryDetailsViewModel(titleText: topStory.title ?? "", authorText: topStory.byline ?? "", imageUrl: imageUrl ?? "", dateText: dateString, detailsText: topStory.abstract ?? "", seeMoreLink: topStory.url ?? "" , subSection: topStory.subsection ?? "")
+        self.selectedTopStory = TopStoryDetailsViewModel(titleText: topStory.newsTitle ?? "", authorText: topStory.newsByLine ?? "", imageUrl: imageUrl ?? "", dateText: dateString, detailsText: topStory.newsAbstract ?? "", seeMoreLink: topStory.newsWebUrl ?? "" , subSection: topStory.newSubsection ?? "")
+        return self.selectedTopStory
         
     }
 }

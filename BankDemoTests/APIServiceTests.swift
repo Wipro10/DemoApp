@@ -11,27 +11,27 @@ import XCTest
 
 class APIServiceTests: XCTestCase {
     
-    var sut: APIService?
+    var apiService: APIService?
     
     override func setUp() {
         super.setUp()
-        sut = APIService()
+        apiService = APIService()
     }
     
     override func tearDown() {
-        sut = nil
+        apiService = nil
         super.tearDown()
     }
     
-    func test_fetch_top_stories() {
+    func testFetchTopStories() {
         
         // Given A apiservice
-        let sut = self.sut
+        let apiService = self.apiService
         
         // When fetch top stories
         let expect = XCTestExpectation(description: "callback")
         
-        sut?.fetchTopStories(complete: { (success, topStories, error) in
+        apiService?.fetchTopStories(complete: { (success, topStories, error) in
             expect.fulfill()
             for story in topStories {
                 XCTAssertNotNil(story)

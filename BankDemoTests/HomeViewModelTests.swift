@@ -33,9 +33,9 @@ class HomeViewModelTests: XCTestCase {
   
     
     
-    func test_fetch_topStories() {
+    func testFetchTopStories() {
         // Given
-        mockAPIService.completeTopStories = [TopStories]()
+        mockAPIService.completeTopStories = [TopStorie]()
         
         // When
         homeViewModel?.initFetch()
@@ -45,7 +45,7 @@ class HomeViewModelTests: XCTestCase {
         
     }
     
-    func test_fetch_topStories_fail() {
+    func testFetchTopStoriesFail() {
         
 //        //Create an instance of Api error for mocking the fetch fail
 //        let error
@@ -62,7 +62,7 @@ class HomeViewModelTests: XCTestCase {
     }
    
     
-    func test_get_cell_view_model() {
+    func testGetCellViewModel() {
         
         //Given a sut with fetched topstories
         goToFetchTopStoriesFinished()
@@ -74,12 +74,12 @@ class HomeViewModelTests: XCTestCase {
         let vm = homeViewModel?.getCellViewModel(at: indexPath)
         
         //Assert
-        XCTAssertEqual( vm?.titleText, testStory.title)
-        XCTAssertEqual( vm?.authorText, testStory.byline)
+        XCTAssertEqual( vm?.titleText, testStory.newsTitle)
+        XCTAssertEqual( vm?.authorText, testStory.newsByLine)
 
     }
    
-    func test_userPress_view_model() {
+    func testUserPressViewModel() {
         
         //Given a sut with fetched topstories
         goToFetchTopStoriesFinished()
@@ -88,11 +88,11 @@ class HomeViewModelTests: XCTestCase {
         let testStory = mockAPIService.completeTopStories[indexPath.row]
         
         // When
-        homeViewModel?.userPressed(at: indexPath)
+        let dataModel = homeViewModel?.userPressed(at: indexPath.row)
         
         //Assert
-        XCTAssertEqual( testStory.title, homeViewModel?.selectedTopStory?.titleText)
-        XCTAssertEqual( testStory.byline, homeViewModel?.selectedTopStory?.authorText)
+        XCTAssertEqual( dataModel?.titleText, testStory.newsTitle)
+        XCTAssertEqual( dataModel?.authorText, testStory.newsByLine)
 
     }
     
@@ -119,11 +119,11 @@ extension HomeViewModelTests {
 class MockApiService: APIServiceProtocol {
     var isFetchTopStoriesCalled = false
 
-    var completeTopStories: [TopStories] = [TopStories]()
-    var completeClosure: ((Bool, [TopStories], Error?) -> ())!
+    var completeTopStories: [TopStorie] = [TopStorie]()
+    var completeClosure: ((Bool, [TopStorie], Error?) -> ())!
     
     
-    func fetchTopStories(complete: @escaping (Bool, [TopStories], Error?) -> ()) {
+    func fetchTopStories(complete: @escaping (Bool, [TopStorie], Error?) -> ()) {
         isFetchTopStoriesCalled = true
         completeClosure = complete
         
@@ -140,14 +140,14 @@ class MockApiService: APIServiceProtocol {
 }
 
 class StubGenerator {
-    func stubTopStories() -> [TopStories] {
+    func stubTopStories() -> [TopStorie] {
         guard let path = Bundle.main.path(forResource: "localStorage", ofType: "json") else { return []}
         do {
         let data = try Data(contentsOf: URL(fileURLWithPath: path))
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let topStoriesList = try decoder.decode(TopStoriesResponse.self, from: data)
-            return topStoriesList.results ?? []
+            return topStoriesList.newsResults ?? []
         } catch {}
       return []
     }

@@ -7,19 +7,13 @@
 
 import Foundation
 struct TopStoriesResponse : Codable {
-    let status : String?
-    let copyright : String?
-    let section : String?
-    let last_updated : String?
-    let num_results : Int?
-    let results : [TopStories]?
+    let responseStatus : String?
+    let newCopyright : String?
+    let newsResults : [TopStorie]?
 
     enum CodingKeys: String, CodingKey {
-        case status
-        case copyright
-        case section
-        case last_updated
-        case num_results
-        case results
+        case responseStatus = "status"
+        case newCopyright = "copyright"
+        case newsResults = "results"
     }
 }

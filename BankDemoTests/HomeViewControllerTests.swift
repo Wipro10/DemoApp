@@ -9,7 +9,6 @@ import XCTest
 @testable import BankDemo
 
 class HomeViewControllerTests: XCTestCase {
-   // var homeViewModel = HomeViewModelTests()
     var  mockAPIService = MockApiService()
     var homeViewModel: HomeViewModel?
     var sut = (UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController)
@@ -41,7 +40,7 @@ class HomeViewControllerTests: XCTestCase {
         if let viewModel = homeViewModel {
             sut?.viewModel = viewModel
             let rowNumber = sut?.newsTableView?.numberOfRows(inSection: 0)
-            XCTAssertEqual(rowNumber, 38, "should return the right number of rows")
+            XCTAssertEqual(rowNumber, 6, "should return the right number of rows")
         }
     }
     func testSectionNumberOfTableView() {
@@ -55,36 +54,8 @@ class HomeViewControllerTests: XCTestCase {
         if let viewModel = homeViewModel {
         sut?.viewModel = viewModel
             let cell = sut?.tableView(sut?.newsTableView ?? UITableView(), cellForRowAt: IndexPath(row: 0, section: 0)) as? NewsCell
-            XCTAssertEqual(cell?.newsTitle.text, "Kavanaugh, Interpol, the Afghan War: Your Monday Briefing")
-            XCTAssertEqual(cell?.newCoverBy.text, "By ALISHA HARIDASANI GUPTA")
-        }
-    }
-//    func testTablee() {
-//        //homeViewModel.goToFetchTopStoriesFinished()
-//      //  sut?.viewModel.topStories = StubGenerator().stubTopStories()
-//        mockAPIService.completeTopStories = StubGenerator().stubTopStories()
-//        let indexPath = IndexPath(row: 1, section: 0)
-//        let testStory = mockAPIService.completeTopStories[indexPath.row]
-//        
-//       // homeViewModel.initFetch()
-//        homeViewModel?.initFetch()
-//        mockAPIService.fetchSuccess()
-//        
-//        sut?.viewModel = homeViewModel!
-//        
-//        let vm = sut?.viewModel.getCellViewModel(at: indexPath)
-//        
-//    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+            XCTAssertEqual(cell?.newsTitle.text, "Audrey Wells, Screenwriter Behind ‘The Hate U Give,’ Dies at 58")
+            XCTAssertEqual(cell?.newCoverBy.text, "By SARAH MERVOSH")
         }
     }
 

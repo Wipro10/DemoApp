@@ -86,16 +86,22 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
-        self.viewModel.userPressed(at: indexPath)
+       // self.viewModel.userPressed(at: indexPath)
         return indexPath
        
     }    
 }
-
 extension HomeViewController {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let vc = segue.destination as? DetailsViewController,
+//            let topStory = viewModel.selectedTopStory {
+//            vc.topStoryViewModel = topStory
+//        }
+//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailsViewController,
-            let topStory = viewModel.selectedTopStory {
+           let topStory = self.viewModel.userPressed(at: newsTableView?.indexPathForSelectedRow?.row ?? 0) {
+//            let topStory = viewModel.selectedTopStory {
             vc.topStoryViewModel = topStory
         }
     }

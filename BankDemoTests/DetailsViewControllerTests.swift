@@ -9,30 +9,32 @@ import XCTest
 @testable import BankDemo
 
 class DetailsViewControllerTests: XCTestCase {
-    let sut = (UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController)
+    var detailsViewController = (UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController)
+    var  mockAPIService = MockApiService()
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut?.loadViewIfNeeded()
+        detailsViewController?.loadViewIfNeeded()
     }
     func testRender() {
-        
-        let model = TopStoryDetailsViewModel(titleText: "testTitle", authorText: "Dr Richard", imageUrl: "https://static01.nyt.com/images/2018/10/07/briefing/08Briefing-asia-promo/08Briefing-asia-promo-thumbStandard.jpg", dateText: "2018-10-07T17:40:06-04:00", detailsText: "Test Desc", seeMoreLink: "Test", subSection: "Test")
-        sut?.topStoryViewModel  = model
-        sut?.viewSetUp()
-        XCTAssertEqual(sut?.navigationItem.title, "News Details")
-        XCTAssertEqual(sut?.newsTitle?.text, "testTitle")
-        XCTAssertEqual(sut?.newsDesc?.text, "Test Desc")
-        XCTAssertEqual(sut?.newsAuthor?.text, "Dr Richard")
-        XCTAssertEqual(sut?.newsDate?.text, "2018-10-07T17:40:06-04:00")
+        //Given a sut with fetched topstories
+        mockAPIService.completeTopStories = StubGenerator().stubTopStories()
+        let indexPath = IndexPath(row: 1, section: 0)
+        let testStory = mockAPIService.completeTopStories[indexPath.row]
+        let model = TopStoryDetailsViewModel(titleText: testStory.newsTitle ?? "", authorText: testStory.newsByLine ?? "", imageUrl: "", dateText: testStory.newsPublishedDate ?? "", detailsText: testStory.newsAbstract ?? "", seeMoreLink: testStory.newsWebUrl ?? "", subSection: testStory.newSubsection ?? "")
+        detailsViewController?.topStoryViewModel  = model
+        detailsViewController?.viewSetUp()
+        XCTAssertEqual(detailsViewController?.navigationItem.title, "News Details")
+        XCTAssertEqual(detailsViewController?.newsTitle?.text, "A Pastor Pushes Forward as a Drought Threatens His Town and His Church")
+        XCTAssertEqual(detailsViewController?.newsDesc?.text, "The specter of harder times hangs over a rural Australian town where the worst of the drought has yet to come.")
+        XCTAssertEqual(detailsViewController?.newsAuthor?.text, "By RICK ROJAS")
+        XCTAssertEqual(detailsViewController?.newsDate?.text, "2018-10-07T15:01:06-04:00")
     }
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        detailsViewController = nil
     }
 
+
 }
+
+
