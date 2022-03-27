@@ -20,7 +20,7 @@ class DetailsViewControllerTests: XCTestCase {
         mockAPIService.completeTopStories = StubGenerator().stubTopStories()
         let indexPath = IndexPath(row: 1, section: 0)
         let testStory = mockAPIService.completeTopStories[indexPath.row]
-        let model = TopStoryDetailsViewModel(titleText: testStory.newsTitle ?? "", authorText: testStory.newsByLine ?? "", imageUrl: "", dateText: testStory.newsPublishedDate ?? "", detailsText: testStory.newsAbstract ?? "", seeMoreLink: testStory.newsWebUrl ?? "", subSection: testStory.newSubsection ?? "")
+        let model = TopStoryDetailsViewModel(titleText: testStory.newsTitle , authorText: testStory.newsByLine ?? "", imageUrl: "", dateText: testStory.newsPublishedDate ?? "", detailsText: testStory.newsAbstract , seeMoreLink: testStory.newsWebUrl , subSection: testStory.newSubsection )
         detailsViewController?.topStoryViewModel  = model
         detailsViewController?.viewSetUp()
         XCTAssertEqual(detailsViewController?.navigationItem.title, "News Details")

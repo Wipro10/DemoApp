@@ -7,12 +7,12 @@
 
 import Foundation
 struct ImageInformation : Codable {
-    let imageUrl : String?
-    let imageFormat : String?
-    let imageHeight : Int?
-    let imageWidth : Int?
-    let imageType : String?
-    let imageCopyright : String?
+    let imageUrl : String
+    let imageFormat : String
+    let imageHeight : Int
+    let imageWidth : Int
+    let imageType : String
+    let imageCopyright : String
 
     enum CodingKeys: String, CodingKey {
 

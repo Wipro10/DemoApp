@@ -7,10 +7,10 @@
 
 import Foundation
 struct TopStorie : Codable {
-    let newSubsection : String?
-    let newsTitle : String?
-    let newsAbstract : String?
-    let newsWebUrl : String?
+    let newSubsection : String
+    let newsTitle : String
+    let newsAbstract : String
+    let newsWebUrl : String
     let newsByLine : String?
     let newsPublishedDate : String?
     let imageGallery : [ImageInformation]?

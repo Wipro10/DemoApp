@@ -96,13 +96,6 @@ class HomeViewModelTests: XCTestCase {
 
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
 
 
@@ -147,7 +140,7 @@ class StubGenerator {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let topStoriesList = try decoder.decode(TopStoriesResponse.self, from: data)
-            return topStoriesList.newsResults ?? []
+            return topStoriesList.newsResults
         } catch {}
       return []
     }

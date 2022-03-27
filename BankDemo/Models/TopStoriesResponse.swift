@@ -7,9 +7,9 @@
 
 import Foundation
 struct TopStoriesResponse : Codable {
-    let responseStatus : String?
-    let newCopyright : String?
-    let newsResults : [TopStorie]?
+    let responseStatus : String
+    let newCopyright : String
+    let newsResults : [TopStorie]
 
     enum CodingKeys: String, CodingKey {
         case responseStatus = "status"

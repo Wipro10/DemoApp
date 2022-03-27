@@ -72,8 +72,7 @@ class HomeViewModel {
         
         let imageUrl =  (multimdeia?.count) ?? 0  > 0 ? multimdeia?[0].imageUrl : ""
         
-        return TopStoriesListCellViewModel(titleText: topStory.newsTitle ??
-                                               "" , authorText: topStory.newsByLine ?? "" , imageUrl: imageUrl ?? "")
+        return TopStoriesListCellViewModel(titleText: topStory.newsTitle , authorText: topStory.newsByLine ?? "" , imageUrl: imageUrl ?? "")
     }
     
     private func processFetchedTopStories( topStories: [TopStorie] ) {
@@ -100,7 +99,7 @@ extension HomeViewModel {
 
             dateString = dateArray.count > 0 ? dateArray[0]  : ""
         }
-        self.selectedTopStory = TopStoryDetailsViewModel(titleText: topStory.newsTitle ?? "", authorText: topStory.newsByLine ?? "", imageUrl: imageUrl ?? "", dateText: dateString, detailsText: topStory.newsAbstract ?? "", seeMoreLink: topStory.newsWebUrl ?? "" , subSection: topStory.newSubsection ?? "")
+        self.selectedTopStory = TopStoryDetailsViewModel(titleText: topStory.newsTitle , authorText: topStory.newsByLine ?? "", imageUrl: imageUrl ?? "", dateText: dateString, detailsText: topStory.newsAbstract , seeMoreLink: topStory.newsWebUrl , subSection: topStory.newSubsection)
         return self.selectedTopStory
         
     }
