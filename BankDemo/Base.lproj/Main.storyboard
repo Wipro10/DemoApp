@@ -78,7 +78,6 @@
                                             <outlet property="newCoverBy" destination="G2J-oq-bIi" id="kgO-bC-obj"/>
                                             <outlet property="newsImage" destination="SQn-Y5-q6l" id="bf6-wX-G5s"/>
                                             <outlet property="newsTitle" destination="AqJ-KN-rPl" id="HI4-UM-Vg3"/>
-                                            <segue destination="Ap1-vU-MhW" kind="show" id="Lb2-Lm-eB8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khK-mh-LGg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0C-vU-gxx">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -182,7 +181,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Open Web Link"/>
                                                 <connections>
-                                                    <segue destination="hSm-8K-hTD" kind="show" id="4Lv-li-4R0"/>
+                                                    <action selector="openWebKit:" destination="Ap1-vU-MhW" eventType="touchUpInside" id="wuD-T8-j5m"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -250,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-B3-4EX">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -258,7 +257,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="I82-ct-mqU">
-                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>

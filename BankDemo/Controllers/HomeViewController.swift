@@ -53,9 +53,11 @@ class HomeViewController: UIViewController,APIresponseDeleagte {
         }
     }
     func showAlert( _ message: String ) {
-        let alert = UIAlertController(title: Strings.alertTitle, message: message, preferredStyle: .alert)
-        alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: Strings.alertTitle, message: message, preferredStyle: .alert)
+            alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -82,17 +84,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return indexPath
-    }    
-}
-extension HomeViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? DetailsViewController,
-           let topStory = self.viewModel.userPressed(at: newsTableView?.indexPathForSelectedRow?.row ?? 0) {
-            vc.topStoryViewModel = topStory
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let topStory = self.viewModel.userPressed(at: indexPath.row) else { return }
+        let detailsViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: ViewControllerIdentifier.detailsViewController, creator: { coder -> DetailsViewController? in
+             DetailsViewController(coder: coder, topStoryViewModel:topStory)
+        })
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
+
 

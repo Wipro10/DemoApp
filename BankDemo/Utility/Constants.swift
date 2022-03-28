@@ -10,9 +10,9 @@ struct Cells {
     static let newsCell = "NewsCell"
 }
 
-struct SegueIdentifier {
-    
-    static let seeMoreSegue = "seeMoreSegue"
+struct ViewControllerIdentifier {
+    static let webLinkViewController = "WebLinkViewController"
+    static let detailsViewController = "DetailsViewController"
 }
 
 struct ImageSize {

@@ -16,6 +16,14 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var newsAuthor: UILabel?
     @IBOutlet weak var newsDate: UILabel?
     
+    init?(coder: NSCoder, topStoryViewModel: TopStoryDetailsViewModel) {
+        self.topStoryViewModel = topStoryViewModel
+        super.init(coder: coder)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("Use `init(coder:topStoryViewModel:)` to initialize an `DetailsViewController` instance.")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +44,11 @@ class DetailsViewController: UIViewController {
         self.newsDate?.text = topStoryViewModel?.dateText
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let webVC = segue.destination as? WebLinkViewController else { return }
-        webVC.weblink = topStoryViewModel?.seeMoreLink
+    
+    @IBAction func openWebKit(_ sender: Any) {
+        let webLinkViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: ViewControllerIdentifier.webLinkViewController, creator: { coder -> WebLinkViewController? in
+                WebLinkViewController(coder: coder, websiteLink: self.topStoryViewModel?.seeMoreLink ?? "")
+            })
+        self.navigationController?.pushViewController(webLinkViewController, animated: true)
     }
 }
