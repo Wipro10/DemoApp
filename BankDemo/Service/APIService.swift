@@ -63,10 +63,7 @@ class APIService: APIServiceProtocol {
                 complete(false, [], error)
              }
             }.resume()
-
     }
-    
-    
     
 }
 

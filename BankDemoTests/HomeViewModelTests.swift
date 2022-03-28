@@ -11,12 +11,10 @@ import XCTest
 
 class HomeViewModelTests: XCTestCase {
     var homeViewModel: HomeViewModel?
-   // var mockAPIService: MockApiService!
     var  mockAPIService = MockApiService()
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-       // mockAPIService = MockApiService()
         homeViewModel = HomeViewModel(apiService: mockAPIService)
     }
     
@@ -25,7 +23,6 @@ class HomeViewModelTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         homeViewModel = nil
-      //  mockAPIService = nil
         super.tearDown()
     }
     
@@ -49,7 +46,6 @@ class HomeViewModelTests: XCTestCase {
         
 //        //Create an instance of Api error for mocking the fetch fail
 //        let error
-
         // When
         homeViewModel?.initFetch()
         let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Object does not exist"])
