@@ -17,7 +17,7 @@ class HomeViewModel {
     public weak var delegate: APIresponseDeleagte?
     let apiService: APIServiceProtocol
     
-    private var topStories: [TopStorie] = [TopStorie]()
+    private var topStories: [Article] = [Article]()
     
     private var cellViewModels: [TopStoriesListCellViewModel] = [TopStoriesListCellViewModel]() {
         didSet {
@@ -64,7 +64,7 @@ class HomeViewModel {
         return cellViewModels[indexPath.row]
     }
     
-    func createCellViewModel( topStory: TopStorie ) -> TopStoriesListCellViewModel {
+    func createCellViewModel( topStory: Article ) -> TopStoriesListCellViewModel {
         
         let multimdeia = topStory.imageGallery?.filter{
             $0.imageFormat == ImageSize.thumbLarge
@@ -75,7 +75,7 @@ class HomeViewModel {
         return TopStoriesListCellViewModel(titleText: topStory.newsTitle , authorText: topStory.newsByLine ?? "" , imageUrl: imageUrl ?? "")
     }
     
-    private func processFetchedTopStories( topStories: [TopStorie] ) {
+    private func processFetchedTopStories( topStories: [Article] ) {
         self.topStories = topStories // Cache
         var vms = [TopStoriesListCellViewModel]()
         for topStory in topStories {

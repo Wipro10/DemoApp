@@ -6,10 +6,10 @@
 //
 
 import Foundation
-struct TopStoriesResponse : Codable {
+struct NewsResponse : Codable {
     let responseStatus : String
     let newCopyright : String
-    let newsResults : [TopStorie]
+    let newsResults : [Article]
 
     enum CodingKeys: String, CodingKey {
         case responseStatus = "status"

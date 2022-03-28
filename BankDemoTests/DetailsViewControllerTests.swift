@@ -23,7 +23,6 @@ class DetailsViewControllerTests: XCTestCase {
         let model = TopStoryDetailsViewModel(titleText: testStory.newsTitle , authorText: testStory.newsByLine ?? "", imageUrl: "", dateText: testStory.newsPublishedDate ?? "", detailsText: testStory.newsAbstract , seeMoreLink: testStory.newsWebUrl , subSection: testStory.newSubsection )
         detailsViewController?.topStoryViewModel  = model
         detailsViewController?.viewSetUp()
-        XCTAssertEqual(detailsViewController?.navigationItem.title, "News Details")
         XCTAssertEqual(detailsViewController?.newsTitle?.text, "A Pastor Pushes Forward as a Drought Threatens His Town and His Church")
         XCTAssertEqual(detailsViewController?.newsDesc?.text, "The specter of harder times hangs over a rural Australian town where the worst of the drought has yet to come.")
         XCTAssertEqual(detailsViewController?.newsAuthor?.text, "By RICK ROJAS")

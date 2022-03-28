@@ -7,7 +7,7 @@
 
 import Foundation
 protocol APIServiceProtocol {
-    func fetchTopStories( complete: @escaping ( _ success: Bool, _ topStories: [TopStorie], _ error: Error? )->() )
+    func fetchTopStories( complete: @escaping ( _ success: Bool, _ topStories: [Article], _ error: Error? )->() )
 }
 private enum Constant {
     static let quaryPath = "topstories/v2/home.json"
@@ -16,10 +16,6 @@ private enum Constant {
 }
 class UrlComponents {
     let path: String
-   // let baseUrlString = "https://api.nytimes.com/svc/"
-   // let apiKey = "NOVRG34ooMNMdAj835jgPeMIyLk1n24E"
-    
-    
     var url: URL {
         var query = [String]()
         query.append("api-key=\(Constant.apiKey)")
@@ -42,9 +38,8 @@ private let sessionManager: URLSession = {
 }()
 
 class APIService: APIServiceProtocol {
-  //  let quaryPath = "topstories/v2/home.json"
     // Simulate a long waiting for fetching
-    func fetchTopStories( complete: @escaping ( _ success: Bool, _ results: [TopStorie], _ error: Error? )->() ) {
+    func fetchTopStories( complete: @escaping ( _ success: Bool, _ results: [Article], _ error: Error? )->() ) {
         
         let urlComponents = UrlComponents(path: Constant.quaryPath)
         let request = URLRequest(url: urlComponents.url)
@@ -59,7 +54,7 @@ class APIService: APIServiceProtocol {
             guard let data = data else {
                 return
             }
-            let response = try? JSONDecoder().decode(TopStoriesResponse.self, from: data)
+            let response = try? JSONDecoder().decode(NewsResponse.self, from: data)
             if(response?.responseStatus == "OK") {
                 if let resultsItem = response?.newsResults {
                     complete( true, resultsItem, nil )

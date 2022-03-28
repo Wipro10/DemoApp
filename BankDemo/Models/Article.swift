@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct TopStorie : Codable {
+struct Article : Codable {
     let newSubsection : String
     let newsTitle : String
     let newsAbstract : String

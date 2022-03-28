@@ -25,5 +25,6 @@ struct Strings {
     static let homeTitle = "World News"
     static let alertTitle = "Alert"
     static let newsDetails = "News Details"
+    static let webLink = "Web Link"
 
 }

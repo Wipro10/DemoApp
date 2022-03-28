@@ -172,14 +172,29 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jz-Zh-o3O">
+                                                <rect key="frame" x="20" y="252" width="374" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="j6Q-88-1Lm"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Open Web Link"/>
+                                                <connections>
+                                                    <segue destination="hSm-8K-hTD" kind="show" id="4Lv-li-4R0"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="8Jz-Zh-o3O" firstAttribute="top" secondItem="jhV-c8-llr" secondAttribute="bottom" constant="10" id="BZ8-50-bnV"/>
                                             <constraint firstItem="jhV-c8-llr" firstAttribute="leading" secondItem="RbQ-ma-JVf" secondAttribute="leading" id="Ecq-Wj-xNl"/>
                                             <constraint firstItem="nc6-4d-zr5" firstAttribute="leading" secondItem="Gix-ZO-HUw" secondAttribute="leading" id="FRb-fQ-K4d"/>
                                             <constraint firstItem="Gix-ZO-HUw" firstAttribute="leading" secondItem="x0C-vU-gxx" secondAttribute="leading" constant="10" id="Kbk-F4-JhH"/>
                                             <constraint firstItem="Gix-ZO-HUw" firstAttribute="top" secondItem="qZA-KE-YVS" secondAttribute="bottom" constant="10" id="Kx8-Ae-ijl"/>
                                             <constraint firstItem="jhV-c8-llr" firstAttribute="top" secondItem="RbQ-ma-JVf" secondAttribute="bottom" constant="10" id="L7u-S2-HFN"/>
+                                            <constraint firstItem="8Jz-Zh-o3O" firstAttribute="leading" secondItem="x0C-vU-gxx" secondAttribute="leading" constant="20" id="V5G-fx-5dI"/>
                                             <constraint firstItem="RbQ-ma-JVf" firstAttribute="top" secondItem="nc6-4d-zr5" secondAttribute="bottom" constant="10" id="ZQr-Z2-bz9"/>
                                             <constraint firstAttribute="trailing" secondItem="qZA-KE-YVS" secondAttribute="trailing" id="cvq-A0-0Zb"/>
                                             <constraint firstItem="RbQ-ma-JVf" firstAttribute="leading" secondItem="nc6-4d-zr5" secondAttribute="leading" id="cxa-dY-i5q"/>
@@ -189,6 +204,7 @@
                                             <constraint firstItem="qZA-KE-YVS" firstAttribute="top" secondItem="x0C-vU-gxx" secondAttribute="top" id="gDW-yS-Xxe"/>
                                             <constraint firstItem="qZA-KE-YVS" firstAttribute="leading" secondItem="x0C-vU-gxx" secondAttribute="leading" id="iBR-SZ-d7E"/>
                                             <constraint firstAttribute="trailing" secondItem="RbQ-ma-JVf" secondAttribute="trailing" constant="10" id="iEE-3X-h9r"/>
+                                            <constraint firstAttribute="trailing" secondItem="8Jz-Zh-o3O" secondAttribute="trailing" constant="20" id="joe-P9-5zv"/>
                                             <constraint firstAttribute="trailing" secondItem="nc6-4d-zr5" secondAttribute="trailing" constant="10" id="nXQ-k8-cX8"/>
                                         </constraints>
                                     </view>
@@ -225,11 +241,59 @@
             </objects>
             <point key="canvasLocation" x="1772" y="64"/>
         </scene>
+        <!--Web Link View Controller-->
+        <scene sceneID="zCn-Fy-QTG">
+            <objects>
+                <viewController storyboardIdentifier="WebLinkViewController" id="hSm-8K-hTD" customClass="WebLinkViewController" customModule="BankDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QB1-L5-qcu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIT-B3-4EX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="I82-ct-mqU">
+                                <rect key="frame" x="188.5" y="456.5" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9ZI-4g-eLD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yIT-B3-4EX" firstAttribute="top" secondItem="9ZI-4g-eLD" secondAttribute="top" id="EFT-0B-loS"/>
+                            <constraint firstItem="9ZI-4g-eLD" firstAttribute="bottom" secondItem="yIT-B3-4EX" secondAttribute="bottom" id="UrU-Ar-dLz"/>
+                            <constraint firstItem="yIT-B3-4EX" firstAttribute="leading" secondItem="9ZI-4g-eLD" secondAttribute="leading" id="Y1R-rC-7zs"/>
+                            <constraint firstItem="9ZI-4g-eLD" firstAttribute="trailing" secondItem="yIT-B3-4EX" secondAttribute="trailing" id="asA-f9-C1G"/>
+                            <constraint firstItem="I82-ct-mqU" firstAttribute="centerX" secondItem="yIT-B3-4EX" secondAttribute="centerX" id="cS6-Rh-SPF"/>
+                            <constraint firstItem="I82-ct-mqU" firstAttribute="centerY" secondItem="yIT-B3-4EX" secondAttribute="centerY" id="yrX-p3-dQ1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Po6-4d-umn"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="I82-ct-mqU" id="74L-bw-sPV"/>
+                        <outlet property="newsWebView" destination="yIT-B3-4EX" id="Ow9-A7-cmJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S13-JJ-dPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2538" y="40"/>
+        </scene>
     </scenes>
     <resources>
         <image name="placeholder" width="420" height="420"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

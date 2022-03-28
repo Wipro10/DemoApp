@@ -23,10 +23,6 @@ class BankDemoUITests: XCTestCase {
     }
     
     func testTableView() {
-      //  app.launchArguments = ["enable-testing"]
-      //  app.launchArguments.append("MOCKFLAG")
-      //  app.launchArguments.append("--uitesting")
-
         app.launch()
         let tablelist = app.descendants(matching: .table)
         print(tablelist)
@@ -48,10 +44,17 @@ class BankDemoUITests: XCTestCase {
                 if i == (count - 1) {
                     promise.fulfill()
                 }
-                // Back
+                let loadMoreButton = app.buttons["Open Web Link"]
+                XCTAssertTrue(loadMoreButton.exists, "Open Web Link Button Exit")
+                loadMoreButton.tap()
+                let webView = app.webViews["newsWebView"]
+                //Display Webview
+                XCTAssertTrue(webView.exists, "WKWebView Exit")
+                // Back Button
+                app.navigationBars.buttons.element(boundBy: 0).tap()
                 app.navigationBars.buttons.element(boundBy: 0).tap()
             }
-            waitForExpectations(timeout: 5, handler: nil)
+            waitForExpectations(timeout:2, handler: nil)
             XCTAssertTrue(true, "Finished validating the table cells")
         } else {
             XCTAssert(false, "Was not able to find any table cells")

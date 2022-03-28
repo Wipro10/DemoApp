@@ -23,14 +23,21 @@ class DetailsViewController: UIViewController {
         
         viewSetUp()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = Strings.newsDetails
+    }
     func viewSetUp()  {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.newsImage?.downloadImageFromURL(topStoryViewModel?.imageUrl ?? "" ,icon: UIImage(named: "placeholder"))
-        self.navigationItem.title = Strings.newsDetails
         self.newsTitle?.text = topStoryViewModel?.titleText
         self.newsDesc?.text = topStoryViewModel?.detailsText
         self.newsAuthor?.text = topStoryViewModel?.authorText
         self.newsDate?.text = topStoryViewModel?.dateText
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let webVC = segue.destination as? WebLinkViewController else { return }
+        webVC.weblink = topStoryViewModel?.seeMoreLink
     }
 }

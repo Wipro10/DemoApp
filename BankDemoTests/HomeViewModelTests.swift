@@ -35,7 +35,7 @@ class HomeViewModelTests: XCTestCase {
     
     func testFetchTopStories() {
         // Given
-        mockAPIService.completeTopStories = [TopStorie]()
+        mockAPIService.completeTopStories = [Article]()
         
         // When
         homeViewModel?.initFetch()
@@ -112,11 +112,11 @@ extension HomeViewModelTests {
 class MockApiService: APIServiceProtocol {
     var isFetchTopStoriesCalled = false
 
-    var completeTopStories: [TopStorie] = [TopStorie]()
-    var completeClosure: ((Bool, [TopStorie], Error?) -> ())!
+    var completeTopStories: [Article] = [Article]()
+    var completeClosure: ((Bool, [Article], Error?) -> ())!
     
     
-    func fetchTopStories(complete: @escaping (Bool, [TopStorie], Error?) -> ()) {
+    func fetchTopStories(complete: @escaping (Bool, [Article], Error?) -> ()) {
         isFetchTopStoriesCalled = true
         completeClosure = complete
         
@@ -133,13 +133,13 @@ class MockApiService: APIServiceProtocol {
 }
 
 class StubGenerator {
-    func stubTopStories() -> [TopStorie] {
+    func stubTopStories() -> [Article] {
         guard let path = Bundle.main.path(forResource: "localStorage", ofType: "json") else { return []}
         do {
         let data = try Data(contentsOf: URL(fileURLWithPath: path))
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let topStoriesList = try decoder.decode(TopStoriesResponse.self, from: data)
+        let topStoriesList = try decoder.decode(NewsResponse.self, from: data)
             return topStoriesList.newsResults
         } catch {}
       return []
