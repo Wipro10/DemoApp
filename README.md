@@ -18,9 +18,11 @@ Swift 5.0 and  Xcode 13.1
 Project Details
 -----
 * `APIService.swift` - Calling web API.
-* `TopStoriesResponse.swift,TopStorie.swift,ImageInformation.swift` - Data model with the information to show in the table.
+* `NewsResponse.swift,Article.swift,ImageInformation.swift` - Data model with the information to show in the table.
 * `HomeViewModel.swift` - Manage and format the data to be displayed in the views.
 * `NewsCell.swift` - The cell that contain the data.
 * `DetailsViewController.swift` - The view contain the detail data.
+* `WebLinkViewController.swift` - Load webview.
 * `Constants.swift, AsyncImageLoader.swift` - Utility classes.
+
 
