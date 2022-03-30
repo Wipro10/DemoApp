@@ -10,6 +10,7 @@ import XCTest
 @testable import BankDemo
 
 class HomeViewModelTests: XCTestCase {
+    
     var homeViewModel: HomeViewModel?
     var  mockAPIService = MockApiService()
     override func setUp() {
@@ -18,18 +19,12 @@ class HomeViewModelTests: XCTestCase {
         homeViewModel = HomeViewModel(apiService: mockAPIService)
     }
     
-   
-    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         homeViewModel = nil
         super.tearDown()
     }
-    
-    
-  
-    
-    
+     
     func testFetchTopStories() {
         // Given
         mockAPIService.completeTopStories = [Article]()
@@ -39,13 +34,10 @@ class HomeViewModelTests: XCTestCase {
         
         // Assert
             XCTAssert(mockAPIService.isFetchTopStoriesCalled)
-        
     }
     
     func testFetchTopStoriesFail() {
-        
-//        //Create an instance of Api error for mocking the fetch fail
-//        let error
+        //Create an instance of Api error for mocking the fetch fail
         // When
         homeViewModel?.initFetch()
         let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Object does not exist"])
@@ -59,7 +51,6 @@ class HomeViewModelTests: XCTestCase {
    
     
     func testGetCellViewModel() {
-        
         //Given a sut with fetched topstories
         goToFetchTopStoriesFinished()
         
@@ -76,7 +67,6 @@ class HomeViewModelTests: XCTestCase {
     }
    
     func testUserPressViewModel() {
-        
         //Given a sut with fetched topstories
         goToFetchTopStoriesFinished()
         
@@ -97,6 +87,7 @@ class HomeViewModelTests: XCTestCase {
 
 //MARK: State control
 extension HomeViewModelTests {
+    
     private func goToFetchTopStoriesFinished() {
         mockAPIService.completeTopStories = StubGenerator().stubTopStories()
         homeViewModel?.initFetch()
@@ -106,16 +97,17 @@ extension HomeViewModelTests {
 
 
 class MockApiService: APIServiceProtocol {
+    
     var isFetchTopStoriesCalled = false
-
+    
     var completeTopStories: [Article] = [Article]()
+    
     var completeClosure: ((Bool, [Article], Error?) -> ())!
     
     
     func fetchTopStories(complete: @escaping (Bool, [Article], Error?) -> ()) {
         isFetchTopStoriesCalled = true
         completeClosure = complete
-        
     }
 
     func fetchSuccess() {
@@ -129,6 +121,7 @@ class MockApiService: APIServiceProtocol {
 }
 
 class StubGenerator {
+    
     func stubTopStories() -> [Article] {
         guard let path = Bundle.main.path(forResource: "localStorage", ofType: "json") else { return []}
         do {

@@ -8,13 +8,18 @@
 import Foundation
 import UIKit
 
-protocol APIresponseDeleagte: AnyObject{
+protocol APIResponseDelegate: AnyObject{
+    
     func completedApiRequest()
+    
     func showError()
+    
     func statusAPIRequest()
 }
 class HomeViewModel {
-    public weak var delegate: APIresponseDeleagte?
+    
+    public weak var delegate: APIResponseDelegate?
+    
     let apiService: APIServiceProtocol
     
     private var topStories: [Article] = [Article]()
@@ -61,7 +66,9 @@ class HomeViewModel {
     }
     
     func getCellViewModel( at indexPath: IndexPath ) -> TopStoriesListCellViewModel {
+        
         return cellViewModels[indexPath.row]
+        
     }
     
     func createCellViewModel( topStory: Article ) -> TopStoriesListCellViewModel {
@@ -76,6 +83,7 @@ class HomeViewModel {
     }
     
     private func processFetchedTopStories( topStories: [Article] ) {
+        
         self.topStories = topStories // Cache
         var vms = [TopStoriesListCellViewModel]()
         for topStory in topStories {
@@ -87,7 +95,9 @@ class HomeViewModel {
 }
 
 extension HomeViewModel {
-    func userPressed( at: Int ) -> TopStoryDetailsViewModel?{
+    
+    func userPressed( at: Int ) -> TopStoryDetailsViewModel? {
+        
         let topStory = self.topStories[at]
         let multimdeia = topStory.imageGallery?.filter{
             $0.imageFormat == ImageSize.mediumThreeByTwo210
@@ -100,18 +110,20 @@ extension HomeViewModel {
             dateString = dateArray.count > 0 ? dateArray[0]  : ""
         }
         self.selectedTopStory = TopStoryDetailsViewModel(titleText: topStory.newsTitle , authorText: topStory.newsByLine ?? "", imageUrl: imageUrl ?? "", dateText: dateString, detailsText: topStory.newsAbstract , seeMoreLink: topStory.newsWebUrl , subSection: topStory.newSubsection)
+       
         return self.selectedTopStory
-        
     }
 }
 
 struct TopStoriesListCellViewModel {
+    
     let titleText: String
     let authorText: String
     let imageUrl: String
 }
 
 struct TopStoryDetailsViewModel {
+    
     let titleText: String
     let authorText: String
     let imageUrl: String

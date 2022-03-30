@@ -9,13 +9,16 @@ import Foundation
 import UIKit
 
 class NewsCell: UITableViewCell {
-    @IBOutlet weak var newCoverBy: UILabel!
-    @IBOutlet weak var newsTitle: UILabel!
-    @IBOutlet weak var newsImage: UIImageView!
     
-    func setupView(cellVM: TopStoriesListCellViewModel) {
+    @IBOutlet weak private var newsCoverBy: UILabel!
+    
+    @IBOutlet weak private var newsTitle: UILabel!
+    
+    @IBOutlet weak private var newsImage: UIImageView!
+    
+     func setupView(cellVM: TopStoriesListCellViewModel) {
         self.newsTitle.text = cellVM.titleText
-        self.newCoverBy.text = cellVM.authorText
+        self.newsCoverBy.text = cellVM.authorText
         self.newsImage.downloadImageFromURL(cellVM.imageUrl,icon: UIImage(named: "placeholder"))
     }
 }

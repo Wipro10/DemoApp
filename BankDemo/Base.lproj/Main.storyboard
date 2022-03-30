@@ -75,7 +75,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="newCoverBy" destination="G2J-oq-bIi" id="kgO-bC-obj"/>
+                                            <outlet property="newsCoverBy" destination="G2J-oq-bIi" id="KsU-A4-8yj"/>
                                             <outlet property="newsImage" destination="SQn-Y5-q6l" id="bf6-wX-G5s"/>
                                             <outlet property="newsTitle" destination="AqJ-KN-rPl" id="HI4-UM-Vg3"/>
                                         </connections>

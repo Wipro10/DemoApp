@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 class DetailsViewController: UIViewController {
+    
     var topStoryViewModel : TopStoryDetailsViewModel?
-    @IBOutlet weak var newsImage: UIImageView?
-    @IBOutlet weak var newsTitle: UILabel?
-    @IBOutlet weak var newsDesc: UILabel?
-    @IBOutlet weak var newsAuthor: UILabel?
-    @IBOutlet weak var newsDate: UILabel?
+    @IBOutlet weak private var newsImage: UIImageView!
+    @IBOutlet weak private var newsTitle: UILabel!
+    @IBOutlet weak private var newsDesc: UILabel!
+    @IBOutlet weak private var newsAuthor: UILabel!
+    @IBOutlet weak private var newsDate: UILabel!
     
     init?(coder: NSCoder, topStoryViewModel: TopStoryDetailsViewModel) {
         self.topStoryViewModel = topStoryViewModel

@@ -16,7 +16,6 @@
 		B0647C7527E4C3990041F165 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0647C7327E4C3990041F165 /* Main.storyboard */; };
 		B0647C7727E4C39E0041F165 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0647C7627E4C39E0041F165 /* Assets.xcassets */; };
 		B0647C7A27E4C39E0041F165 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0647C7827E4C39E0041F165 /* LaunchScreen.storyboard */; };
-		B0647C8527E4C39F0041F165 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647C8427E4C39F0041F165 /* HomeViewControllerTests.swift */; };
 		B0647C8F27E4C39F0041F165 /* BankDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647C8E27E4C39F0041F165 /* BankDemoUITests.swift */; };
 		B0647C9127E4C39F0041F165 /* BankDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647C9027E4C39F0041F165 /* BankDemoUITestsLaunchTests.swift */; };
 		B0647CA427E4C7650041F165 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647CA327E4C7650041F165 /* NewsCell.swift */; };
@@ -29,7 +28,6 @@
 		B0647CB227E4CD9C0041F165 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647CB127E4CD9C0041F165 /* AsyncImageLoader.swift */; };
 		B0647CB427E4D56F0041F165 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0647CB327E4D56F0041F165 /* DetailsViewController.swift */; };
 		B0D12CA727F163F5008C7410 /* WebLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D12CA627F163F5008C7410 /* WebLinkViewController.swift */; };
-		B0EDDD1427EB272A00BE7AA8 /* DetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EDDD1327EB272A00BE7AA8 /* DetailsViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +60,6 @@
 		B0647C7927E4C39E0041F165 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0647C7B27E4C39E0041F165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0647C8027E4C39F0041F165 /* BankDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0647C8427E4C39F0041F165 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
 		B0647C8A27E4C39F0041F165 /* BankDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0647C8E27E4C39F0041F165 /* BankDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDemoUITests.swift; sourceTree = "<group>"; };
 		B0647C9027E4C39F0041F165 /* BankDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -76,7 +73,6 @@
 		B0647CB127E4CD9C0041F165 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 		B0647CB327E4D56F0041F165 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B0D12CA627F163F5008C7410 /* WebLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkViewController.swift; sourceTree = "<group>"; };
-		B0EDDD1327EB272A00BE7AA8 /* DetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +145,6 @@
 				B04A531127E8ACEA002059B2 /* localStorage.json */,
 				B04A531227E8ACEA002059B2 /* APIServiceTests.swift */,
 				B04A531027E8ACEA002059B2 /* HomeViewModelTests.swift */,
-				B0647C8427E4C39F0041F165 /* HomeViewControllerTests.swift */,
-				B0EDDD1327EB272A00BE7AA8 /* DetailsViewControllerTests.swift */,
 			);
 			path = BankDemoTests;
 			sourceTree = "<group>";
@@ -371,8 +365,6 @@
 			files = (
 				B04A531527E8ACEA002059B2 /* APIServiceTests.swift in Sources */,
 				B04A531327E8ACEA002059B2 /* HomeViewModelTests.swift in Sources */,
-				B0EDDD1427EB272A00BE7AA8 /* DetailsViewControllerTests.swift in Sources */,
-				B0647C8527E4C39F0041F165 /* HomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

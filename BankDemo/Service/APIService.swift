@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 protocol APIServiceProtocol {
     func fetchTopStories( complete: @escaping ( _ success: Bool, _ topStories: [Article], _ error: Error? )->() )
 }
@@ -14,6 +15,7 @@ private enum Constant {
     static let baseUrlString = "https://api.nytimes.com/svc/"
     static let apiKey = "NOVRG34ooMNMdAj835jgPeMIyLk1n24E"
 }
+
 class UrlComponents {
     let path: String
     var url: URL {
@@ -23,7 +25,6 @@ class UrlComponents {
         guard let composedUrl = URL(string: "?" + query.joined(separator: "&"), relativeTo: NSURL(string: Constant.baseUrlString + path + "?") as URL?) else {
             fatalError("Unable to build request url")
         }
-        
         return composedUrl
     }
     

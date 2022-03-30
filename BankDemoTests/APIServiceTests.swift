@@ -33,12 +33,9 @@ class APIServiceTests: XCTestCase {
         
         apiService?.fetchTopStories(complete: { (success, topStories, error) in
             expect.fulfill()
-            //for story in topStories {
                 XCTAssertNotNil(topStories)
-           // }
             
         })
-        
         wait(for: [expect], timeout: 31.0)
     }
     

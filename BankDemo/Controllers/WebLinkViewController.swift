@@ -8,15 +8,18 @@
 import UIKit
 import WebKit
 
-class WebLinkViewController: UIViewController,WKNavigationDelegate {
+class WebLinkViewController: UIViewController, WKNavigationDelegate {
     var weblink : String?
-    @IBOutlet weak var newsWebView: WKWebView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak private var newsWebView: WKWebView!
+    
+    @IBOutlet weak private var loadingIndicator: UIActivityIndicatorView!
     
     init?(coder: NSCoder, websiteLink: String) {
         self.weblink = websiteLink
         super.init(coder: coder)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("Use `init(coder:link:)` to initialize an `WebLinkViewController` instance.")
     }
@@ -25,9 +28,10 @@ class WebLinkViewController: UIViewController,WKNavigationDelegate {
         super.viewDidLoad()
         loadNewsWebkit()
     }
+    
     // MARK: - Setup LoadNewsWebkit
     func loadNewsWebkit()  {
-        newsWebView.accessibilityLabel = "newsWebView"
+        newsWebView.accessibilityLabel = AccessibilityLabel.newsWebView
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = Strings.webLink
         newsWebView.navigationDelegate = self

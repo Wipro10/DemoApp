@@ -6,17 +6,16 @@
 //
 
 import Foundation
-struct Article : Codable {
-    let newSubsection : String
-    let newsTitle : String
-    let newsAbstract : String
-    let newsWebUrl : String
-    let newsByLine : String?
-    let newsPublishedDate : String?
-    let imageGallery : [ImageInformation]?
+struct Article: Codable {
+    let newSubsection: String
+    let newsTitle: String
+    let newsAbstract: String
+    let newsWebUrl: String
+    let newsByLine: String?
+    let newsPublishedDate: String?
+    let imageGallery: [ImageInformation]?
 
     enum CodingKeys: String, CodingKey {
-
         case newSubsection = "subsection"
         case newsTitle = "title"
         case newsAbstract = "abstract"
