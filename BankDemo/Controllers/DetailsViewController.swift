@@ -10,14 +10,14 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    var topStoryViewModel : TopStoryDetailsViewModel?
+    var topStoryViewModel : TopArticleDetailsViewModel?
     @IBOutlet weak private var newsImage: UIImageView!
     @IBOutlet weak private var newsTitle: UILabel!
     @IBOutlet weak private var newsDesc: UILabel!
     @IBOutlet weak private var newsAuthor: UILabel!
     @IBOutlet weak private var newsDate: UILabel!
     
-    init?(coder: NSCoder, topStoryViewModel: TopStoryDetailsViewModel) {
+    init?(coder: NSCoder, topStoryViewModel: TopArticleDetailsViewModel) {
         self.topStoryViewModel = topStoryViewModel
         super.init(coder: coder)
     }

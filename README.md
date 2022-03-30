@@ -1,7 +1,7 @@
 Application Overview
 ------
 
-iOS application that display latest World News and on click on iteam details view will display of the news. User can view in webview as well on click on "Open Web Link".
+iOS application that will display latest World News and click on table cell, article details view will display. User can view also webview mode by clicking on "Open Web Link" option.
 
 MVVM Overview
 ------

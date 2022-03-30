@@ -16,7 +16,7 @@ class NewsCell: UITableViewCell {
     
     @IBOutlet weak private var newsImage: UIImageView!
     
-     func setupView(cellVM: TopStoriesListCellViewModel) {
+     func setupView(cellVM: TopArticleListCellViewModel) {
         self.newsTitle.text = cellVM.titleText
         self.newsCoverBy.text = cellVM.authorText
         self.newsImage.downloadImageFromURL(cellVM.imageUrl,icon: UIImage(named: "placeholder"))

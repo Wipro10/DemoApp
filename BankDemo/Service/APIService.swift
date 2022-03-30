@@ -11,7 +11,7 @@ protocol APIServiceProtocol {
     func fetchTopStories( complete: @escaping ( _ success: Bool, _ topStories: [Article], _ error: Error? )->() )
 }
 private enum Constant {
-    static let quaryPath = "topstories/v2/home.json"
+    static let queryPath = "topstories/v2/home.json"
     static let baseUrlString = "https://api.nytimes.com/svc/"
     static let apiKey = "NOVRG34ooMNMdAj835jgPeMIyLk1n24E"
 }
@@ -42,7 +42,7 @@ class APIService: APIServiceProtocol {
     // Simulate a long waiting for fetching
     func fetchTopStories( complete: @escaping ( _ success: Bool, _ results: [Article], _ error: Error? )->() ) {
         
-        let urlComponents = UrlComponents(path: Constant.quaryPath)
+        let urlComponents = UrlComponents(path: Constant.queryPath)
         let request = URLRequest(url: urlComponents.url)
         sessionManager.dataTask(with: request) { (data, response, error) in
             
