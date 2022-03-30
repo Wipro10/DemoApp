@@ -123,12 +123,12 @@
 		B0647C6C27E4C3990041F165 /* BankDemo */ = {
 			isa = PBXGroup;
 			children = (
-				B0647CA227E4C4200041F165 /* Controllers */,
 				B0647CA127E4C4150041F165 /* Views */,
 				B0647CA027E4C4040041F165 /* ViewModels */,
+				B0647CA227E4C4200041F165 /* Controllers */,
 				B0647C9F27E4C3F20041F165 /* Models */,
-				B0647C9E27E4C3E30041F165 /* Utility */,
 				B0647C9D27E4C3D90041F165 /* Service */,
+				B0647C9E27E4C3E30041F165 /* Utility */,
 				B0647C6D27E4C3990041F165 /* AppDelegate.swift */,
 				B0647C6F27E4C3990041F165 /* SceneDelegate.swift */,
 				B0647C7327E4C3990041F165 /* Main.storyboard */,
